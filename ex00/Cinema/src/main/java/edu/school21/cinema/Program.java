@@ -1,4 +1,7 @@
 package edu.school21.cinema;
 
-public class Program {
+import javax.servlet.http.HttpServlet;
+
+public class Program extends HttpServlet {
+
 }
