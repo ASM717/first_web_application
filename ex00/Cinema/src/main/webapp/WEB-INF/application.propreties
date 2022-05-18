@@ -1,4 +1,4 @@
 db.driverClassName=org.postgresql.Driver
-db.url=jdbc:postgresql://localhost:5432/Cinema21
+db.url=jdbc:postgresql://localhost:5432/postgres
 db.username=gastellsky
-db.password=
+db.password=qwerty

@@ -12,6 +12,15 @@
 </head>
 <body>
 <h1>Hello, I am a Java web app!</h1>
+
+<p>
+    <%
+        java.util.Date now = new java.util.Date();
+        String time = "Текущее время : " + now;
+    %>
+    <%= time%>
+</p>
+
 <p>SIGN UP <a href="signUp.jsp">here</a></p>
 <p>SIGN IN <a href="signIn.jsp">here</a></p>
 </body>
