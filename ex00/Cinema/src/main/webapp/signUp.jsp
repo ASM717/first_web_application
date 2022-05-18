@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <title>FWA | SIGN UP</title>
+</head>
+
 <style>
     body {font-family: Arial, Helvetica, sans-serif;}
     * {box-sizing: border-box}
@@ -44,6 +49,8 @@
     .cancelbtn {
         padding: 14px 20px;
         background-color: #f44336;
+        text-decoration:none;
+        color: #f1f1f1;
     }
 
     /* Float cancel and signup buttons and add an equal width */
@@ -80,22 +87,14 @@
         <hr>
 
 <!--        <label for="email"><b>Email</b></label>-->
-        <input type="text" placeholder="Enter Email" name="email" required>
+        <input type="text" placeholder="Enter Phone Number" name="phone_number" required>
 
 <!--        <label for="psw"><b>Password</b></label>-->
-        <input type="password" placeholder="Enter Password" name="psw" required>
-
-<!--        <label for="psw-repeat"><b>Repeat Password</b></label>-->
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-        <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-        </label>
-
-        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+        <input type="password" placeholder="Enter Password" name="password" required>
 
         <div class="clearfix">
-            <button type="button" class="cancelbtn">Cancel</button>
+<%--            <button type="button" class="cancelbtn">Cancel</button>--%>
+            <a href="index.jsp" class="cancelbtn">Cancel</a>
             <button type="submit" class="signupbtn">Sign Up</button>
         </div>
     </div>

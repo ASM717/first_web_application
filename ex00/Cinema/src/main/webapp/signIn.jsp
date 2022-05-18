@@ -32,7 +32,10 @@
         .cancelbtn {
             width: auto;
             padding: 10px 18px;
-            background-color: #f44336;
+            background-color: #f81200;
+            text-decoration:none;
+            color: #f1f1f1;
+
         }
 
         .imgcontainer {
@@ -71,26 +74,22 @@
 <h2>Login Form</h2>
 
 <form action="/action_page.php">
-<!--    <div class="imgcontainer">-->
-<!--        <img src="img_avatar2.png" alt="Avatar" class="avatar">-->
-<!--    </div>-->
-
     <div class="container">
         <!--        <label for="uname"><b>Username</b></label>-->
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Phone Number" name="phone_number" required>
 
         <!--        <label for="psw"><b>Password</b></label>-->
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="password" required>
 
         <button type="submit">Login</button>
-        <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
+        <body>
+        <a href="index.jsp" class="cancelbtn">Cancel</a>
+
+        </body>
+
     </div>
 </form>
 
