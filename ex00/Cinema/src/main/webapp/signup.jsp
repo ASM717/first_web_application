@@ -86,7 +86,11 @@
         <p>Please fill in this form to create an account.</p>
         <hr>
 
-<!--        <label for="email"><b>Email</b></label>-->
+        <input type="text" placeholder="Enter Your First Name" name="first_name" required>
+
+        <input type="text" placeholder="Enter Your Last Name" name="last_name" required>
+
+        <!--        <label for="email"><b>Email</b></label>-->
         <input type="text" placeholder="Enter Phone Number" name="phone_number" required>
 
 <!--        <label for="psw"><b>Password</b></label>-->

@@ -13,15 +13,17 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
-        <servlet-name>SignInServlet</servlet-name>
-        <jsp-file>edu.school21.cinema.servlets.SignInServlet</jsp-file>
+        <servlet-name>SignUpServlet</servlet-name>
+        <servlet-class>edu.school21.cinema.servlets.SignUpServlet</servlet-class>
+<!--        <jsp-file>/signup.jsp</jsp-file>-->
     </servlet>
     <servlet-mapping>
-        <servlet-name>SignInServlet</servlet-name>
-        <url-pattern>/signin</url-pattern>
+        <servlet-name>SignUpServlet</servlet-name>
+        <url-pattern>/signup</url-pattern>
     </servlet-mapping>
+
+
 
 
 

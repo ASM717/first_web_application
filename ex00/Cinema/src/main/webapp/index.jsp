@@ -11,7 +11,7 @@
     <title>FWA</title>
 </head>
 <body>
-<h1>Hello, I am a Java web app!</h1>
+<h1>Hello, I am a Java First Web App!</h1>
 
 <p>
     <%
@@ -21,7 +21,7 @@
     <%= time%>
 </p>
 
-<p>SIGN UP <a href="signUp.jsp">here</a></p>
-<p>SIGN IN <a href="signIn.jsp">here</a></p>
+<p>SIGN UP <a href="signup.jsp">here</a></p>
+<p>SIGN IN <a href="signin.jsp">here</a></p>
 </body>
 </html>
