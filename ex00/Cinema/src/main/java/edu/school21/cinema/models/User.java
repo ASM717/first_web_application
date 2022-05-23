@@ -13,7 +13,4 @@ public class User {
     private String lastName;
     private String phoneNumber;
     private String password;
-
-//    val map = (val) new HashMap<String, String>();
-
 }
