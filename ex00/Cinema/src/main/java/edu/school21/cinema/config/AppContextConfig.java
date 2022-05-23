@@ -39,11 +39,6 @@ public class AppContextConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10);
-
-//        int strength = 10; // work factor of bcrypt
-//        BCryptPasswordEncoder bCryptPasswordEncoder =
-//                new BCryptPasswordEncoder(strength, new SecureRandom());
-//        String encodedPassword = bCryptPasswordEncoder.encode(plainPassword);
     }
 }
 
