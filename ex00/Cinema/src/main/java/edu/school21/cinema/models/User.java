@@ -1,6 +1,5 @@
 package edu.school21.cinema.models;
 
-
 import lombok.Data;
 
 //@Getter

@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserService {
+public class UsersService {
     @Autowired
     private UsersRepositoryJdbcTemplate userRepo;
     @Autowired
