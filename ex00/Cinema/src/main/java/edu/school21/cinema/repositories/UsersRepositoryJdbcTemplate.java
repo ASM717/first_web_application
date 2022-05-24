@@ -28,7 +28,7 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
 
     @Override
     public void save(User entity) {
-        jdbcTemplate.update("INSERT INTO users.users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO schema.users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)",
                 entity.getFirstName(), entity.getLastName(), entity.getPhoneNumber(), entity.getPassword());
     }
 
@@ -45,7 +45,7 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
     @Override
     public User findByPhoneNumber(String phoneNumber) {
         try {
-            return jdbcTemplate.queryForObject("SELECT * FROM users.users WHERE phone_number = ?",
+            return jdbcTemplate.queryForObject("SELECT * FROM schema.users WHERE phone_number = ?",
                     new UserMapper(), phoneNumber);
         } catch (Exception e) {
             return null;

@@ -1,4 +1,4 @@
-INSERT INTO users.users (first_name, last_name, phone_number, password)
+INSERT INTO schema.users (first_name, last_name, phone_number, password)
 VALUES ('Elena', 'mstyr', '+79991111111', '$2a$12$G0OxDQ8V0M7auu1wZDOUzeGy58I0d2b.wlTYU4njoRym.b7FedVBy'),
        ('Gregory', 'esobchak', '+79992222222', '$2a$12$4M7pZawTHAXQXoswdkhBQuYf2DfRNIPAcvUE5JDSUU23MvtkKjQbe'),
        ('Ksenia', 'maragorn', '+79993333333', '$2a$12$4xDgzrmxgXalPSmApngXAuytOQH2OadFuRVvfZx4bR9uK/fQTmVMa'),

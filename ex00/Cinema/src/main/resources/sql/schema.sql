@@ -1,8 +1,8 @@
-create schema if not exists users;
+create schema if not exists schema;
 
-drop table if exists users.users;
+drop table if exists schema.users;
 
-create table if not exists users.users(
+create table if not exists schema.users(
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
