@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "signUpServlet", value = "/signUp")
+@WebServlet("/signUp")
 public class SignUpServlet extends HttpServlet {
     private UsersService usersService;
 
@@ -28,7 +28,7 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/signUp.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/signUpPage.jsp").forward(request, response);
     }
 
     @Override

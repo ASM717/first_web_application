@@ -12,7 +12,7 @@
 
 <!--    <servlet>-->
 <!--        <servlet-name>signUp</servlet-name>-->
-<!--        <jsp-file>/WEB-INF/jsp/signUp.jsp</jsp-file>-->
+<!--        <jsp-file>/WEB-INF/jsp/signUpPage.jsp</jsp-file>-->
 <!--    </servlet>-->
 <!--    <servlet-mapping>-->
 <!--        <servlet-name>signUp</servlet-name>-->
@@ -22,7 +22,7 @@
 
 <!--    <servlet>-->
 <!--        <servlet-name>signIn</servlet-name>-->
-<!--        <jsp-file>/WEB-INF/jsp/signIn.jsp</jsp-file>-->
+<!--        <jsp-file>/WEB-INF/jsp/signInPage.jsp</jsp-file>-->
 <!--    </servlet>-->
 <!--    <servlet-mapping>-->
 <!--        <servlet-name>signIn</servlet-name>-->

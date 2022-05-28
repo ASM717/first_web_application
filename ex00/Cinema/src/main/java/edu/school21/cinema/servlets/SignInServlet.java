@@ -3,6 +3,7 @@ package edu.school21.cinema.servlets;
 import edu.school21.cinema.exceptions.ErrorException;
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.services.UsersService;
+import lombok.SneakyThrows;
 import org.springframework.context.ApplicationContext;
 
 import javax.servlet.ServletConfig;
@@ -28,33 +29,13 @@ public class SignInServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/signIn.jsp").forward(request, response);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        request.getRequestDispatcher("/WEB-INF/jsp/signInPage.jsp").forward(request, response);
     }
 
+    @SneakyThrows
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Map<String, String[]> params = request.getParameterMap();
 
-        User user = null;
-        try {
-            user = usersService.login(params.get("phoneNumber")[0], params.get("password")[0]);
-        } catch (ErrorException e) {
-            e.printStackTrace();
-        }
-//        if (user == null) {
-//            Map<String, String> errors = new HashMap<>();
-//            errors.put("commonError", "Phone number or password incorrect");
-//            Map<String, String> fields = new HashMap<>();
-//            fields.put("phoneNumber", params.get("phoneNumber")[0]);
-
-//            request.setAttribute("errors", errors);
-//            request.setAttribute("fields", fields);
-//            request.getRequestDispatcher("/signInForm").forward(request, response);
-//        } else {
-//            HttpSession session = request.getSession();
-//            session.setAttribute("user", user);
-//            response.sendRedirect(request.getContextPath() + "/allright");
-//        }
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class UsersService {
     @Autowired
@@ -25,26 +26,19 @@ public class UsersService {
     }
 
     public User login(String phoneNumber, String password) throws ErrorException {
-        validate(phoneNumber, password);
-
-        User user = userRepo.findByPhoneNumber(phoneNumber);
-        return user != null && passwordEncoder.matches(password, user.getPassword()) ? user : null;
+        Optional<User> optionalUser = Optional.ofNullable(userRepo.findByPhoneNumber(phoneNumber));
+        if (!optionalUser.isPresent()) {
+            return null;
+        }
+        User user = optionalUser.get();
+        if(passwordEncoder.matches(password, user.getPassword())) {
+            return user;
+        }
+        return null;
     }
 
-    private static void validate(String email, String password) throws ErrorException {
-        Map<String, String> errors = new HashMap<>();
+    private static void validate(String phoneNumber, String password) throws ErrorException {
 
-        if (StringUtils.isEmpty(email)) {
-            errors.put("email", "Not defined");
-        }
-
-        if (StringUtils.isEmpty(password)) {
-            errors.put("password", "Not defined");
-        }
-
-//        if (!errors.isEmpty()) {
-//            throw new ErrorException(errors);
-//        }
     }
 
 }
