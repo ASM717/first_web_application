@@ -28,7 +28,7 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
 
     @Override
     public void save(User entity) {
-        jdbcTemplate.update("INSERT INTO schema.users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO schema.users (first_name, last_name, phone_number, password) VALUES (?, ?, ?, ?)",
                 entity.getFirstName(), entity.getLastName(), entity.getPhoneNumber(), entity.getPassword());
     }
 

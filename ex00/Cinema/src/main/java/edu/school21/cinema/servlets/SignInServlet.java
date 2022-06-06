@@ -30,12 +30,29 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        request.getRequestDispatcher("/WEB-INF/jsp/signInPage.jsp").forward(request, response);
+        HttpSession session = req.getSession();
+        if (session.getAttribute("user") != null) {
+            req.getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("WEB-INF/jsp/signInPage.jsp").forward(req, resp);
+        }
     }
 
     @SneakyThrows
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String phoneNumber = req.getParameter("phoneNumber");
+        String password = req.getParameter("password");
 
+        if (phoneNumber != null && !phoneNumber.isEmpty() && password != null && !password.isEmpty()) {
+            User user = usersService.login(phoneNumber, password);
+            if (user != null) {
+                HttpSession session = req.getSession();
+                session.setAttribute("user", user);
+                req.getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(req, resp);
+                return;
+            }
+        }
+        doGet(req, resp);
     }
 }

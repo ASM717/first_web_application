@@ -18,7 +18,7 @@ public class UsersService {
     private PasswordEncoder passwordEncoder;
 
     public void createUser(String firstName, String lastName, String phoneNumber, String password) {
-        User user = new User();
+        User user = new User(firstName, lastName, phoneNumber, password);
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setPhoneNumber(phoneNumber);
