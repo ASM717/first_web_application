@@ -53,15 +53,13 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
     }
 
     private static class UserMapper implements RowMapper<User> {
-
         @Override
         public User mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-            User user = new User();
-//            user.setId(rs.getLong("id"));
-            user.setFirstName(resultSet.getString("first_name"));
-            user.setLastName(resultSet.getString("last_name"));
-            user.setPhoneNumber(resultSet.getString("phone_number"));
-            user.setPassword(resultSet.getString("password"));
+            User user = new User(
+                    resultSet.getString("first_name"),
+                    resultSet.getString("last_name"),
+                    resultSet.getString("phone_number"),
+                    resultSet.getString("password"));
             return user;
         }
     }

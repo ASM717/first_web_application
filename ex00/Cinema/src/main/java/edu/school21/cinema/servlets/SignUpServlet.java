@@ -41,24 +41,18 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        Map<String, String[]> params = request.getParameterMap();
-//        usersService.createUser(params.get("firstName")[0],
-//                                params.get("lastName")[0],
-//                                params.get("phoneNumber")[0],
-//                                params.get("password")[0]);
-//        response.sendRedirect(request.getContextPath() + "/signIn");
-
-//        String firstname = req.getParameter("first");
-//        String lastname = req.getParameter("last");
+        Map<String, String[]> params = req.getParameterMap();
+        String firstname = req.getParameter("first");
+        String lastname = req.getParameter("last");
 //        String email = req.getParameter("email");
-//        String phone = req.getParameter("phone");
-//        String password = req.getParameter("password");
-//        User user = new User(firstname, lastname, phone, password);
-//        if (usersService.createUser(firstname, lastname, phone, password)) {
-//            // successfull
-//        } else {
-//            doGet(req, resp);
-//        }
+        String phone = req.getParameter("phone");
+        String password = req.getParameter("password");
+        User user = new User(firstname, lastname, phone, password);
+        if (usersService.createUser(firstname, lastname, phone, password)) {
+            // successfull
+        } else {
+            doGet(req, resp);
+        }
 
     }
 }
