@@ -1,22 +1,38 @@
 package edu.school21.cinema.models;
 
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
-//@Getter
-//@Setter
-//@ToString
-@Data
+@Setter
+@Getter
+@ToString
+//@Builder
+//@AllArgsConstructor
+//@NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
-//    private Long id;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String password;
+    Long id;
+    String firstName;
+    String lastName;
+    String phoneNumber;
+    String email;
+    String password;
 
-    public User(String firstName, String lastName, String phoneNumber, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+    public User(long id, String firstname, String lastname, String email, String phone, String password) {
+        this.id = id;
+        this.firstName = firstname;
+        this.lastName = lastname;
+        this.email = email;
+        this.phoneNumber = phone;
+        this.password = password;
+    }
+
+    public User(String firstname, String lastname, String email, String phone, String password) {
+        this.id = null;
+        this.firstName = firstname;
+        this.lastName = lastname;
+        this.email = email;
+        this.phoneNumber = phone;
         this.password = password;
     }
 }

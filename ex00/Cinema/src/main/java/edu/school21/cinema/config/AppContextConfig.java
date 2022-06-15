@@ -2,6 +2,11 @@ package edu.school21.cinema.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import edu.school21.cinema.repositories.UsersRepository;
+import edu.school21.cinema.repositories.UsersRepositoryJdbcTemplate;
+import edu.school21.cinema.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.SecureRandom;
+import java.sql.SQLException;
 
 @Configuration
 @ComponentScan("edu.school21.cinema")
@@ -34,21 +40,23 @@ public class AppContextConfig {
     private String driverName;
 
     @Bean
-    public static DataSource dataSource() {
-        HikariConfig config = new HikariConfig("src/main/webapp/WEB-INF/application.properties");
-        return new HikariDataSource(config);
+    public HikariDataSource dataSource() {
+        HikariDataSource ds = new HikariDataSource();
+        ds.setJdbcUrl(url);
+        ds.setUsername(user);
+        ds.setPassword(password);
+        ds.setDriverClassName(driverName);
+        return ds;
     }
 
     @Bean
-    public static JdbcTemplate jdbcTemplate() throws IOException {
-        JdbcTemplate template = new JdbcTemplate(dataSource());
+    public UsersRepositoryJdbcTemplate userRepository(DataSource ds) {
+        return new UsersRepositoryJdbcTemplate(ds);
+    }
 
-        String data = new String(Files.readAllBytes(Paths.get("sql/data.sql")), StandardCharsets.UTF_8);
-        String schema = new String(Files.readAllBytes(Paths.get("sql/schema.sql")), StandardCharsets.UTF_8);
-        template.execute(schema);
-        template.execute(data);
-
-        return template;
+    @Bean
+    public UserService userService(@Qualifier("userRepository") UsersRepository ur, PasswordEncoder pe) {
+        return new UserService(ur, pe);
     }
 
     @Bean

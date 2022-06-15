@@ -1,12 +1,11 @@
 package edu.school21.cinema.servlets;
 
-import edu.school21.cinema.exceptions.ErrorException;
 import edu.school21.cinema.models.User;
-import edu.school21.cinema.services.UsersService;
-import lombok.SneakyThrows;
+import edu.school21.cinema.services.UserService;
 import org.springframework.context.ApplicationContext;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,18 +13,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 @WebServlet("/signIn")
 public class SignInServlet extends HttpServlet {
-    private UsersService usersService;
+    public SignInServlet() {
+        super();
+    }
+
+    private UserService userService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        ApplicationContext context = (ApplicationContext) config.getServletContext().getAttribute("springContext");
-        this.usersService = context.getBean(UsersService.class);
+        ServletContext context = getServletContext();
+        ApplicationContext springContext = (ApplicationContext) context.getAttribute("springContext");
+        this.userService = springContext.getBean(UserService.class);
     }
 
     @Override
@@ -38,14 +40,13 @@ public class SignInServlet extends HttpServlet {
         }
     }
 
-    @SneakyThrows
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String phoneNumber = req.getParameter("phoneNumber");
+        String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        if (phoneNumber != null && !phoneNumber.isEmpty() && password != null && !password.isEmpty()) {
-            User user = usersService.login(phoneNumber, password);
+        if (email != null && !email.isEmpty() && password != null && !password.isEmpty()) {
+            User user = userService.authorizeUser(email, password);
             if (user != null) {
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
@@ -54,5 +55,9 @@ public class SignInServlet extends HttpServlet {
             }
         }
         doGet(req, resp);
+    }
+
+    public void destroy() {
+        super.destroy();
     }
 }
