@@ -1,9 +1,7 @@
 package edu.school21.cinema.services;
 
-import edu.school21.cinema.exceptions.ErrorException;
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.repositories.UsersRepository;
-import edu.school21.cinema.repositories.UsersRepositoryJdbcTemplate;
 //import org.apache.maven.shared.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,7 +26,7 @@ public class UserService {
         return true;
     }
 
-    public User authorizeUser(String email, String password) {
+    public User authorize(String email, String password) {
         Optional<User> optionalUser = userRepository.findByEmail(email);
         if (!optionalUser.isPresent()) {
             return null;

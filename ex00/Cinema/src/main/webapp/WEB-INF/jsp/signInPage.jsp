@@ -75,10 +75,9 @@
 
 <form action="/action_page.php">
     <div class="container">
-        <!--        <label for="uname"><b>Username</b></label>-->
+
         <input type="text" placeholder="Enter Phone Number" name="phone_number" required>
 
-        <!--        <label for="psw"><b>Password</b></label>-->
         <input type="password" placeholder="Enter Password" name="password" required>
 
         <button type="submit">Login</button>
@@ -88,7 +87,6 @@
         <body>
         <a href="${pageContext.request.contextPath}/WEB-INF/jsp/index.jsp" class="cancelbtn">Cancel</a>
         </body>
-
     </div>
 </form>
 
