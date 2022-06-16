@@ -26,10 +26,10 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
     private final RowMapper<User> userRowMapper = (resultSet, rowNum) -> {
         User user = new User(
                 resultSet.getLong("id"),
-                resultSet.getString("first_name"),
-                resultSet.getString("last_name"),
+                resultSet.getString("firstName"),
+                resultSet.getString("lastName"),
                 resultSet.getString("email"),
-                resultSet.getString("phone_number"),
+                resultSet.getString("phoneNumber"),
                 resultSet.getString("password")
         );
         return user;
@@ -52,7 +52,7 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
 
     @Override
     public void save(User entity) {
-        jdbcTemplate.update("INSERT INTO schema.users (first_name, last_name, email, phone_number, password) VALUES (?, ?, ?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO schema.users (firstName, lastName, email, phoneNumber, password) VALUES (?, ?, ?, ?, ?)",
                 entity.getFirstName(),
                 entity.getLastName(),
                 entity.getEmail(),
@@ -62,7 +62,7 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
 
     @Override
     public void update(User entity) {
-        jdbcTemplate.update("UPDATE schema.users SET first_name = ?, last_name = ?, email = ?, phone_number = ?, password = ? WHERE id = ?",
+        jdbcTemplate.update("UPDATE schema.users SET firstName = ?, lastName = ?, email = ?, phoneNumber = ?, password = ? WHERE id = ?",
                 entity.getFirstName(),
                 entity.getLastName(),
                 entity.getEmail(),
@@ -79,7 +79,7 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
     @Override
     public Optional<User> findByPhoneNumber(String phoneNumber) {
         try {
-            User user = jdbcTemplate.queryForObject("SELECT * FROM schema.users WHERE phone_number = ?", userRowMapper, phoneNumber);
+            User user = jdbcTemplate.queryForObject("SELECT * FROM schema.users WHERE phoneNumber = ?", userRowMapper, phoneNumber);
             return Optional.ofNullable(user);
         } catch (DataAccessException e) {
             return Optional.empty();

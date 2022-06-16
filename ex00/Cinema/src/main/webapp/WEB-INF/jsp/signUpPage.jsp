@@ -98,7 +98,7 @@
 
         <div class="clearfix">
 <%--            <button type="button" class="cancelbtn">Cancel</button>--%>
-            <a href="${pageContext.request.contextPath}/index.jsp" class="cancelbtn">Cancel</a>
+            <a href="${pageContext.request.contextPath}/WEB-INF/jsp/index.jsp" class="cancelbtn">Cancel</a>
             <button type="submit" class="signupbtn">Sign Up</button>
         </div>
     </div>

@@ -39,10 +39,10 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String firstname = req.getParameter("first");
-        String lastname = req.getParameter("last");
+        String firstname = req.getParameter("firstName");
+        String lastname = req.getParameter("lastName");
         String email = req.getParameter("email");
-        String phone = req.getParameter("phone");
+        String phone = req.getParameter("phoneNumber");
         String password = req.getParameter("password");
         User user = new User(firstname, lastname, email, phone, password);
         if (userService.saveUser(firstname, lastname, email, phone, password)) {

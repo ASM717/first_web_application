@@ -25,8 +25,8 @@
 
 <div class="w3-container w3-center"> <!-- content -->
     <div class="w3-bar w3-padding-large w3-padding-24"> <!-- buttons -->
-        <button class="w3-button w3-pale-blue " onclick="location.href='signUp'">Sign Up</button>
-        <button class="w3-button w3-cyan" onclick="location.href='signIn'">Sign In</button>
+        <button class="w3-button w3-pale-yellow " onclick="location.href='signUp'">Sign Up</button>
+        <button class="w3-button w3-yellow" onclick="location.href='signIn'">Sign In</button>
     </div>
 </div>
 

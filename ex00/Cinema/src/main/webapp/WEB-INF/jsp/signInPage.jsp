@@ -86,7 +86,7 @@
 
     <div class="container" style="background-color:#f1f1f1">
         <body>
-        <a href="${pageContext.request.contextPath}/index.jsp" class="cancelbtn">Cancel</a>
+        <a href="${pageContext.request.contextPath}/WEB-INF/jsp/index.jsp" class="cancelbtn">Cancel</a>
         </body>
 
     </div>
