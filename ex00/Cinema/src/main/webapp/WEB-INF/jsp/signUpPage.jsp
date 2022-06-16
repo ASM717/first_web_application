@@ -90,16 +90,16 @@
 
         <input type="text" placeholder="Enter Your Last Name" name="last_name" required>
 
-        <!--        <label for="email"><b>Email</b></label>-->
+        <input type="text" placeholder="Enter Your Email" name="email" required>
+
         <input type="text" placeholder="Enter Phone Number" name="phone_number" required>
 
-<!--        <label for="psw"><b>Password</b></label>-->
         <input type="password" placeholder="Enter Password" name="password" required>
 
         <div class="clearfix">
-<%--            <button type="button" class="cancelbtn">Cancel</button>--%>
-            <a href="${pageContext.request.contextPath}/WEB-INF/jsp/index.jsp" class="cancelbtn">Cancel</a>
-            <button type="submit" class="signupbtn">Sign Up</button>
+            <div class="w3-padding" align="center" style="width: auto">
+                <button type="submit" class="signupbtn" style="width: 100%">Sign Up</button>
+            </div>
         </div>
     </div>
 </form>
