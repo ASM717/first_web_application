@@ -56,8 +56,4 @@ public class SignInServlet extends HttpServlet {
         }
         doGet(req, resp);
     }
-
-    public void destroy() {
-        super.destroy();
-    }
 }
