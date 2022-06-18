@@ -30,7 +30,7 @@ public class AppContextConfig {
     @Value("${db.url}")
     private String url;
 
-    @Value("${db.user}")
+    @Value("${db.username}")
     private String user;
 
     @Value("${db.password}")

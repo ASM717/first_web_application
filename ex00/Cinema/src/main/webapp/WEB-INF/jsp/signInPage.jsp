@@ -73,7 +73,7 @@
 
 <h2>Login Form</h2>
 
-<form action="/action_page.php">
+<form method="post" action="/cinema/signIn">
     <div class="container">
 
         <input type="text" placeholder="Enter Phone Number" name="phone_number" required>
