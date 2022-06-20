@@ -42,11 +42,11 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("email");
+        String phoneNumber = req.getParameter("phone_number");
         String password = req.getParameter("password");
 
-        if (email != null && !email.isEmpty() && password != null && !password.isEmpty()) {
-            User user = userService.authorize(email, password);
+        if (phoneNumber != null && !phoneNumber.isEmpty() && password != null && !password.isEmpty()) {
+            User user = userService.authorize(phoneNumber, password);
             if (user != null) {
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);

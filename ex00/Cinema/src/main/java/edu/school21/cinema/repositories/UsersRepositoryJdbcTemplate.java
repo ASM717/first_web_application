@@ -26,10 +26,10 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
     private final RowMapper<User> userRowMapper = (resultSet, rowNum) -> {
         User user = new User(
                 resultSet.getLong("id"),
-                resultSet.getString("firstName"),
-                resultSet.getString("lastName"),
+                resultSet.getString("first_name"),
+                resultSet.getString("last_name"),
                 resultSet.getString("email"),
-                resultSet.getString("phoneNumber"),
+                resultSet.getString("phone_number"),
                 resultSet.getString("password")
         );
         return user;
@@ -38,7 +38,7 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
     @Override
     public Optional<User> findById(Long id) {
         try {
-            User user = jdbcTemplate.queryForObject("SELECT * FROM schema.users WHERE id = ?", userRowMapper, id);
+            User user = jdbcTemplate.queryForObject("SELECT * FROM users WHERE id = ?", userRowMapper, id);
             return Optional.ofNullable(user);
         } catch (DataAccessException e) {
             return Optional.empty();
@@ -47,12 +47,12 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
 
     @Override
     public List<User> findAll() {
-        return jdbcTemplate.query("SELECT * FROM schema.users", userRowMapper);
+        return jdbcTemplate.query("SELECT * FROM users", userRowMapper);
     }
 
     @Override
     public void save(User entity) {
-        jdbcTemplate.update("INSERT INTO schema.users (firstName, lastName, email, phoneNumber, password) VALUES (?, ?, ?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO users (first_name, last_name, email, phone_number, password) VALUES (?, ?, ?, ?, ?)",
                 entity.getFirstName(),
                 entity.getLastName(),
                 entity.getEmail(),
@@ -62,7 +62,7 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
 
     @Override
     public void update(User entity) {
-        jdbcTemplate.update("UPDATE schema.users SET firstName = ?, lastName = ?, email = ?, phoneNumber = ?, password = ? WHERE id = ?",
+        jdbcTemplate.update("UPDATE users SET first_name = ?, last_name = ?, email = ?, phone_number = ?, password = ? WHERE id = ?",
                 entity.getFirstName(),
                 entity.getLastName(),
                 entity.getEmail(),
@@ -73,13 +73,13 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
 
     @Override
     public void delete(Long id) {
-        jdbcTemplate.update("DELETE FROM schema.users WHERE id = ?", id);
+        jdbcTemplate.update("DELETE FROM users WHERE id = ?", id);
     }
 
     @Override
     public Optional<User> findByPhoneNumber(String phoneNumber) {
         try {
-            User user = jdbcTemplate.queryForObject("SELECT * FROM schema.users WHERE phoneNumber = ?", userRowMapper, phoneNumber);
+            User user = jdbcTemplate.queryForObject("SELECT * FROM users WHERE phone_number = ?", userRowMapper, phoneNumber);
             return Optional.ofNullable(user);
         } catch (DataAccessException e) {
             return Optional.empty();
@@ -89,7 +89,7 @@ public class UsersRepositoryJdbcTemplate implements UsersRepository {
     @Override
     public Optional<User> findByEmail(String email) {
         try {
-            User user = jdbcTemplate.queryForObject("SELECT * FROM schema.users WHERE email = ?", userRowMapper, email);
+            User user = jdbcTemplate.queryForObject("SELECT * FROM users WHERE email = ?", userRowMapper, email);
             return Optional.ofNullable(user);
         } catch (DataAccessException e) {
             return Optional.empty();

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 @WebServlet("/signUp")
@@ -39,17 +40,18 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String firstname = req.getParameter("firstName");
-        String lastname = req.getParameter("lastName");
+        resp.setContentType("text/jsp");
+        String firstname = req.getParameter("first_name");
+        String lastname = req.getParameter("last_name");
         String email = req.getParameter("email");
-        String phone = req.getParameter("phoneNumber");
+        String phone = req.getParameter("phone_number");
         String password = req.getParameter("password");
         User user = new User(firstname, lastname, email, phone, password);
         if (userService.saveUser(firstname, lastname, email, phone, password)) {
             req.getRequestDispatcher("WEB-INF/jsp/signInPage.jsp").forward(req, resp);
+//            req.getRequestDispatcher("WEB-INF/jsp/profile.jsp").forward(req, resp);
         } else {
             doGet(req, resp);
         }
-
     }
 }

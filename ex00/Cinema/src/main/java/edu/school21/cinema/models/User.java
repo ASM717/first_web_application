@@ -6,9 +6,6 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @Getter
 @ToString
-//@Builder
-//@AllArgsConstructor
-//@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
     Long id;
@@ -18,21 +15,25 @@ public class User {
     String email;
     String password;
 
-    public User(long id, String firstname, String lastname, String email, String phone, String password) {
+    public User(long id, String firstName, String lastName, String email, String phoneNumber, String password) {
         this.id = id;
-        this.firstName = firstname;
-        this.lastName = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.phoneNumber = phone;
+        this.phoneNumber = phoneNumber;
         this.password = password;
     }
 
-    public User(String firstname, String lastname, String email, String phone, String password) {
+    public User(String firstName, String lastName, String email, String phoneNumber, String password) {
         this.id = null;
-        this.firstName = firstname;
-        this.lastName = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.phoneNumber = phone;
+        this.phoneNumber = phoneNumber;
         this.password = password;
+    }
+
+    public User() {
+
     }
 }

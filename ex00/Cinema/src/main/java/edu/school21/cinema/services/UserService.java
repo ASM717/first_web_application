@@ -26,8 +26,8 @@ public class UserService {
         return true;
     }
 
-    public User authorize(String email, String password) {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
+    public User authorize(String phoneNumber, String password) {
+        Optional<User> optionalUser = userRepository.findByPhoneNumber(phoneNumber);
         if (!optionalUser.isPresent()) {
             return null;
         }
