@@ -5,28 +5,29 @@ import edu.school21.cinema.repositories.UsersRepository;
 import edu.school21.cinema.repositories.UsersRepositoryJdbcTemplate;
 import edu.school21.cinema.services.UserService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan("edu.school21.cinema")
-//@PropertySource("classpath:../application.properties")
+@PropertySource("application.properties")
 public class AppContextConfig {
-//    @Value("${db.url}")
-    private String url = "jdbc:postgresql://localhost:5432/postgres";
+    @Value("${db.url}")
+    private String url;
+    @Value("${db.username}")
+    private String user = "gastellsky";
 
-//    @Value("${db.username}")
-    private String user = "postgres";
+    @Value("${db.password}")
+    private String password;
 
-//    @Value("${db.password}")
-    private String password = "postgres";
-
-//    @Value("${db.driver.name}")
-    private String driverName = "org.postgresql.Driver";
+    @Value("${db.driver.name}")
+    private String driverName;
 
     @Bean
     public HikariDataSource dataSource() {
