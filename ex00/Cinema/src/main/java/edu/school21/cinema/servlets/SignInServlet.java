@@ -30,6 +30,10 @@ public class SignInServlet extends HttpServlet {
         this.userService = springContext.getBean(UserService.class);
     }
 
+    public void destroy() {
+        super.destroy();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
